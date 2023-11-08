@@ -10,8 +10,6 @@
         "regenerator-runtime": "^0.13.9",
         "sass": "^1.69.5",
         "sass-loader": "^13.0.0",
-        "vue": "^2.5",
-        "vue-loader": "^15.9.5",
         "vue-template-compiler": "^2.7.15",
         "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0",
@@ -26,6 +24,9 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "bootstrap-icons": "^1.11.1"
+        "bootstrap-icons": "^1.11.1",
+        "vue": "^3.3.8",
+        "vue-loader": "^17.3.1",
+        "vuex": "^4.1.0"
     }
 }
