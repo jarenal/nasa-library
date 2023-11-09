@@ -24,7 +24,10 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@videojs-player/vue": "^1.0.0",
+        "axios": "^1.6.1",
         "bootstrap-icons": "^1.11.1",
+        "video.js": "^8.6.1",
         "vue": "^3.3.8",
         "vue-loader": "^17.3.1",
         "vuex": "^4.1.0"

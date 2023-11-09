@@ -7,16 +7,17 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
-
 //const $ = require('jquery');
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything
-require('bootstrap');
-
+import "bootstrap";
 import { createApp } from 'vue';
 import AppComponent from './components/AppComponent.vue';
 import store from './store';
+import VueVideoPlayer from '@videojs-player/vue'
+import 'video.js/dist/video-js.css'
 
 const app = createApp(AppComponent);
 app.use(store);
+app.use(VueVideoPlayer);
 app.mount('#app');

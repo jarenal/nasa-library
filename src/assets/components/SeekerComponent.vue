@@ -12,12 +12,7 @@
         Images
       </label>
     </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" value="" id="media-type-audios" v-model="isAudiosChecked">
-      <label class="form-check-label" for="media-type-audios">
-        Audios
-      </label>
-    </div>
+
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" value="" id="media-type-videos" v-model="isVideosChecked">
       <label class="form-check-label" for="media-type-videos">
@@ -30,6 +25,7 @@
 <script>
 import {ref} from "vue";
 import {useStore} from "vuex";
+import axios from "axios";
 
 export default {
   setup() {
@@ -43,7 +39,30 @@ export default {
 
     const search = (event) => {
       event.preventDefault();
-      store.commit('updateItems', ["Photo 1","Photo 2", "Photo 3"]);
+      let mediaTypes = [];
+
+      if (isImagesChecked.value) {
+        mediaTypes.push('image');
+      }
+
+      if (isAudiosChecked.value) {
+        mediaTypes.push('audio');
+      }
+
+      if (isVideosChecked.value) {
+        mediaTypes.push('video');
+      }
+
+
+      axios.get('/api/search', {
+        params: {
+          query: query.value,
+          media_type: mediaTypes.join(",")
+        }
+      }).then(function (response) {
+        store.commit('updateItems', response.data);
+      }).catch();
+
     };
 
     const handleFormModified = () => {
@@ -66,6 +85,8 @@ export default {
       isAudiosChecked.value = false;
       isVideosChecked.value = false;
       store.commit('updateItems', []);
+      isDisabledSearchButton.value = true;
+      isDisabledResetButton.value = true;
     }
 
     return {
