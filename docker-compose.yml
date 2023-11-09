@@ -2,12 +2,12 @@ version: "3.7"
 
 services:
   web:
-    user: "${DOCKER_USER}"
+#    user: "${DOCKER_USER}"
     build:
       context: .
       dockerfile: "./docker/web/Dockerfile"
-      args:
-        USER: $USER
+#      args:
+#        USER: $USER
     ports:
       - "80:80"
     environment:

@@ -1,7 +1,7 @@
 FROM php:8.2-apache-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG USER
+#ARG USER
 
 ENV APACHE_DOCUMENT_ROOT /var/www/public
 
@@ -26,5 +26,5 @@ COPY ./docker/web/bin/symfony /usr/local/bin/symfony
 
 WORKDIR /var/www
 
-RUN useradd -ms /bin/bash ${USER}
-USER ${USER}
+#RUN useradd -ms /bin/bash ${USER}
+#USER ${USER}
